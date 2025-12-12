@@ -1,12 +1,10 @@
-# made by changsub (revised)
-# Element shape functions, Gauss points, stiffness matrix assembly,
-# and consistent surface load (C3D8) utilities.
-#
-# Key fixes / additions:
-# - B-matrix is zeroed at every Gauss point (safety against stale values)
-# - det(J) check added; raises on non-positive Jacobian
-# - Consistent surface traction/pressure integration for C3D8 faces
-#   using 2x2 Gauss and proper surface Jacobian (|dx1 x dx2|)
+# -*- coding: utf-8 -*-
+# made by changsub
+# Element formulation utilities for the in-house FEM solver.
+# Provides Gauss quadrature rules, shape functions, and B-matrix
+# evaluation for 2D (Quad/Tri) and 3D (Hex/Tet) elements, as well as
+# element stiffness assembly and consistent surface traction/pressure
+# integration compatible with Abaqus-style element definitions.
 
 import numpy as np
 import sympy as sp

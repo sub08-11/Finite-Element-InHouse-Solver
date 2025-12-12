@@ -1,39 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-Assembly_and_solve_eq_export_inp.py  (Strict-List + Legacy/Debug Edition)
-
-Goal
-----
-Keep your original "everything in one file" style while:
-- Guaranteeing **strict-list** behavior for Neumann (seed_nodes define faces 1:1).
-- Preserving **legacy** boundary-detection paths and debuggers (CSV exporters, etc.).
-- Supporting **all three physics** (Elasticity / Heat / Diffusion) in **2D/3D**.
-- Providing clear diagnostics and text reports under ./vtk_out or ./bc_reports.
-
-Key Notes
----------
-1) Strict-List mode (preferred):
-   - If an item in *list* has "seed_nodes" (or "nodes") of length 3/4,
-     we **integrate that face directly** without boundary ownership checks.
-     => **len(list) == number of integrated faces**.
-   - Heat: {"seed_nodes":[n1,n2,n3(,n4)], "qn": 50}
-   - Diffusion: {"seed_nodes":[...], "jn": 1.2}
-   - Elasticity: {"seed_nodes":[...], "traction":[tx,ty,tz]} or {"pressure":p}
-   - Order of seed_nodes is ignored for area/centroid computation.
-   - For pressure, the face normal is the geometric normal from the node ordering; no outward check.
-
-2) Legacy/sets mode:
-   - If you use "nodes_txt"/"nodes"/"sets" (without seed_nodes triplets),
-     we still have the robust old-style boundary face detection (ownership=1)
-     and selection by nodeset containment. Use CSV exporters for verification.
-
-3) Debug Reports:
-   - heat_dirichlet.txt, heat_neumann.txt, diffusion_dirichlet.txt …
-   - elasticity_neumann.txt, elasticity_dirichlet.txt
-   - Optional CSV dumps of faces to help audit.
-
-Author: changsub + assistant (2025-10-16)
-"""
+# made by changsub
+# High-level postprocessing and boundary-condition routing module.
+# Reads the global setting from main.py, expands node/face sets into
+# concrete Dirichlet and Neumann specifications, dispatches to the
+# appropriate BC and assembly classes for elasticity/heat/diffusion,
+# and exports solution fields to VTK (2D/3D) with optional logging and
+# CSV summaries of applied boundary conditions.
 
 from __future__ import annotations
 from typing import List, Tuple, Optional, Dict, Any, Iterable

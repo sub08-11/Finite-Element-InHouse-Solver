@@ -1,32 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-VTK(legacy .vtk, UNSTRUCTURED_GRID) Exporter + ParaView 자동 실행
-- 2D: Tri3, Tri6, Quad4, Quad8
-- 3D: Tet4, Tet10, Hex8, Hex20
-
-Abaqus-style variable names:
-- Linear Elasticity
-  * 2D
-      CELL_DATA : S11_C, S22_C, S12_C, MISES_C
-      POINT_DATA: U (vector), U1, U2, [옵션] S11_P, S22_P, S12_P, MISES_P
-  * 3D
-      CELL_DATA : S11_C, S22_C, S33_C, S12_C, S13_C, S23_C, MISES_C
-      POINT_DATA: U (vector), U1, U2, U3, [옵션] S11_P ... S23_P, MISES_P
-- Heat Transfer
-  * 2D
-      POINT_DATA: NT, [옵션] VECTORS HFL_P + HFL1_P, HFL2_P, HFLMAG_P
-      CELL_DATA : VECTORS HFL_C + HFL1_C, HFL2_C, HFLMAG_C
-  * 3D
-      POINT_DATA: NT, [옵션] VECTORS HFL_P + HFL1_P, HFL2_P, HFL3_P, HFLMAG_P
-      CELL_DATA : VECTORS HFL_C + HFL1_C, HFL2_C, HFL3_C, HFLMAG_C
-- Diffusion
-  * 2D
-      POINT_DATA: Conc, [옵션] VECTORS MFL_P + MFL1_P, MFL2_P, MFLMAG_P
-      CELL_DATA : VECTORS MFL_C + MFL1_C, MFL2_C, MFLMAG_C
-  * 3D
-      POINT_DATA: Conc, [옵션] VECTORS MFL_P + MFL1_P, MFL2_P, MFL3_P, MFLMAG_P
-      CELL_DATA : VECTORS MFL_C + MFL1_C, MFL2_C, MFL3_C, MFLMAG_C
-"""
+# made by changsub
+# VTK exporter and ParaView launcher for analysis results.
+# Converts in-house FEM output (mesh, displacements, stresses, and
+# fluxes) into legacy UNSTRUCTURED_GRID .vtk files for 2D and 3D
+# elements, and provides a helper to open the generated files
+# directly in ParaView.
 
 import numpy as np
 import os, sys, subprocess, shutil, glob

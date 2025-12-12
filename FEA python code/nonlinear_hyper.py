@@ -1,18 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-nonlinear_hyper.py
-[FINAL CORRECTED VERSION]
+# made by changsub
+# Core nonlinear hyperelastic finite element formulations.
+# Implements 2D plane stress/plane strain and 3D Neo-Hookean models,
+# including displacement-only and mixed u-p formulations, SymPy-based
+# stress/tangent generation, assembly of internal forces and tangent
+# stiffness matrices, and traction integration for 3D faces.
 
-Features:
-- 2D Plane Stress/Strain (Compressible & Mixed u-p) with 'tl' and 'abaqus' models.
-- 3D Compressible (Displacement-only) for Linear Hex8 / Tet4.
-
-Fixes:
-- Fixed 'AttributeError' by correcting indentation of assemble methods.
-- Fixed 3D Load Calculation (Area-based).
-- Fixed Stress Sign (Absolute Jacobian).
-- Preserved ALL legacy 2D functions.
-"""
 
 from __future__ import annotations
 from typing import Dict, List, Tuple, Optional, Sequence

@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
-# postprocessing.py — 입력/BC 라우팅 자동화 + diffusion 문제 해결판 (+BC 요약 로깅/CSV)
-# made by changsub (refactor + logging by gpt)
+# made by changsub
+# High-level postprocessing and boundary-condition routing module.
+# Reads the global setting from main.py, expands node/face sets into
+# concrete Dirichlet and Neumann specifications, dispatches to the
+# appropriate BC and assembly classes for elasticity/heat/diffusion,
+# and exports solution fields to VTK (2D/3D) with optional logging and
+# CSV summaries of applied boundary conditions.
+
 
 from pathlib import Path
 import numpy as np

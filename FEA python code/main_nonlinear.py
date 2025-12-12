@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-main_nonlinear.py
-[FINAL] 
-1. 3D Traction Fix: Splits node sets into element faces automatically.
-2. Log Fix: Correctly prints '3D Condition' or 'Plane Strain' based on dimension.
-"""
+# made by changsub
+# Nonlinear hyperelastic analysis driver.
+# Imports the user-defined setting from main.py, configures the
+# NonlinearHyper solver, runs 2D/3D Neo-Hookean analyses (including
+# nearly incompressible cases), and writes custom VTK output for
+# postprocessing in ParaView.
+
 from __future__ import annotations
 import os, sys, importlib
 from typing import Tuple, List, Dict

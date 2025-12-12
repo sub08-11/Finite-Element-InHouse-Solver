@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Sep 24 14:15:45 2025
+# made by changsub
+# Global analysis configuration for linear and nonlinear simulations.
+# Defines the AnalysisConfig dataclass, common I/O paths, material
+# parameters, and load/boundary-condition specifications that are
+# shared by the linear postprocessing and nonlinear driver scripts.
 
-@author: changsub
-
-main.py
-Analysis configuration file used by postprocessing.py and main_nonlinear.py.
-Updated for Adaptive Nonlinear Hyperelastic Analysis.
-"""
 import re
 from pathlib import Path
 from dataclasses import dataclass, field

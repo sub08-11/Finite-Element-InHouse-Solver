@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
-# Preprocessing_export_inp.py (modified)
 # made by changsub
+# Preprocessing utilities for Abaqus INP-driven analyses.
+# Provides the Material_Property class (Hookean elasticity, thermal
+# conductivity, and diffusivity tensors) and the Mesh/INP parsing
+# routines that read *Node and *Element data, build node/element
+# arrays, track ID–row mappings, and prepare mesh metadata for the
+# main FEM workflow.
 
 import os
 import numpy as np
